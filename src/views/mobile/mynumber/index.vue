@@ -54,7 +54,7 @@ body {
       }
       .comeback {
         position: absolute;
-        top: -12%;
+        top: 2%;
         left: 70%;
       }
     }

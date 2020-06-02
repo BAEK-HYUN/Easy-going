@@ -12,6 +12,8 @@
             v-model="value2"
             type="daterange"
             align="right"
+           @change="date"
+            editable
             unlink-panels
             range-separator="至"
             start-placeholder="开始日期"

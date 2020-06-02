@@ -22,8 +22,34 @@
     <el-select v-model="formInline.region" placeholder="请选择">
     </el-select>
   </el-form-item>
-</el-form>
+  <div class="bottom">
+    <div class="bottom-left fl">
+    <span>办理业务</span>
+    <el-checkbox-group v-model="checkList">
+      <el-checkbox label="出行业务"></el-checkbox>
+      <el-checkbox label="签证办理"></el-checkbox>
+      <el-checkbox label="指纹采集"></el-checkbox>
+      <el-checkbox label="证照归还"></el-checkbox>
+      <el-checkbox label="其他业务"></el-checkbox>
+      <el-checkbox label="出国领汇"></el-checkbox>
+    </el-checkbox-group>
   </div>
+  <div class="bottom-right">
+    <span>办理业务</span>
+    <el-checkbox-group v-model="checkList">
+      <el-checkbox label="年"></el-checkbox>
+      <el-checkbox label="月"></el-checkbox>
+    </el-checkbox-group>
+  </div>
+  </div>
+</el-form>
+<div class="botton-list">
+  <el-button size="mini">业务统计</el-button>
+  <el-button size="mini">窗口统计</el-button>
+  <el-button size="mini">评价统计</el-button>
+  <el-button size="mini">导出Excel</el-button>
+</div>
+</div>
 </template>
 
 <script>
@@ -31,6 +57,7 @@ export default {
   name: 'home-allwork',
   data () {
     return {
+      checkList: ['出行业务'],
       pickerOptions: {
         shortcuts: [{
           text: '最近一周',
@@ -78,6 +105,9 @@ export default {
   .fl {
     float: left;
   }
+  .fr {
+    float: right;
+  }
   .logo {
     position: relative;
     margin-bottom: 20px;
@@ -98,6 +128,31 @@ export default {
     font-size: 15px;
     margin:5px 0;
     line-height: 1;
+  }
+  .bottom-left {
+    margin-left: 20px;
+    width: 50%;
+    span {
+      font-size: 15px;
+      display: inline-block;
+    }
+    .el-checkbox-group {
+      margin-top: 10px;
+    }
+  }
+  .bottom-right {
+    span {
+      font-size: 15px;
+      display: inline-block;
+    }
+    .el-checkbox-group {
+      margin-top: 10px;
+    }
+  }
+  .botton-list {
+    margin-top: 25px;
+    margin-left: 10px;
+    font-size: 16px;
   }
 }
 </style>
