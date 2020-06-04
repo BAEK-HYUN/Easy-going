@@ -1,7 +1,7 @@
 <template>
   <div class="mobile-myorder">
     <div class="logo">
-      <img src="./../../../assets/s-logo.png" />
+      <img src="./../../../../public/img/s-logo.png" />
       <span>出 国 ( 境 ) 事 务 预 约</span>
       <el-button round class="comeback" size="mini" @click="comeback">返回首页</el-button>
     </div>

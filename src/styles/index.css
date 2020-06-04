@@ -70,3 +70,6 @@ body .el-picker-panel__sidebar + .el-picker-panel__body {
 body .el-form-item {
   width: 100% !important;
 }
+body .el-input__inner {
+  padding: 0 30px ;
+}

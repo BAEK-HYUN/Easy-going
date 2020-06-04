@@ -2,7 +2,7 @@
   <div class="container-login">
     <!-- 头部 -->
         <header>
-          <img src="./../../assets/logo.png" alt="">
+          <img src="./../../../public/img/logo.png" alt="">
         </header>
         <div class="banner">
         <div class="content w">
@@ -12,7 +12,7 @@
                     <ul>
                       <!-- 跳转页 -->
                       <li>
-                        <img src="./../../assets/1.jpg" class="fl">
+                        <img src="./../../../public/img/1.jpg" class="fl">
                         <el-link href="http://localhost:8080/#/login-tips" target="_blank" style="color:#EE2C2C;">致海外干部员工及家属的一封信</el-link>
                         <p style="color:#fff">疫情期间，集团广大干部员工众志成城，内部筑起疫情防控的钢铁长城，外部驰援70多家抗疫工程，更以高质量复工复产鼎力支持国家经济社会发展。这些也...</p>
                         <el-link href="http://localhost:8080/#/login-tips" target="_blank" style="color: #EE2C2C ;" class="ditail">[详情]</el-link>
@@ -25,7 +25,7 @@
                       <!-- 下载链接 -->
                       <li>
                         <i class="el-icon-download" style="padding-right:5px;color:#fff"></i>
-                        <el-link :underline="false" href="./../../assets/!常用国家签证申请材料" download="下载">关于进一步加强外事管理工作的通知</el-link>
+                        <el-link :underline="false" href="./../../../public/excel/!常用国家签证申请材料" download="下载">关于进一步加强外事管理工作的通知</el-link>
                         <span class="time">{{ new Date().getTime() | dateformat('YYYY-MM-DD')}}</span>
                       </li>
                     </ul>
@@ -127,7 +127,7 @@ export default {
           // 请求参数 请求体 {account,password}
           // 响应内容 用户相关信息
           this.$http.get(
-            'static/js/db.json',
+            './../../../public/static/db.json',
             this.loginForm
           ).then(res => {
           // 响应报文对象（响应状态行，响应头，响应主体 res.data）
@@ -198,7 +198,7 @@ export default {
         { dangerouslyUseHTMLString: true })
     },
     async getJson () {
-      const res = await this.$http.get('static/tips.json', { params: this.lis })
+      const res = await this.$http.get('./../../../public/static/tips.json', { params: this.lis })
       this.lis = res.data
     }
   },
