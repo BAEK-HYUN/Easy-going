@@ -6,20 +6,35 @@
       <el-button round class="comeback" size="mini" @click="comeback">返回首页</el-button>
     </div>
     <div class="content">
-        <div class="block">
-            <span class="demonstration" style="display:inline-block; font-size:16px; margin-bottom:20px; margin-right:40px">我的预约</span>
-            <el-date-picker
+        <div class="block" >
+          <span class="demonstration">开始时间</span>
+          <el-date-picker
+            v-model="value1"
+            type="date"
+            @change="start"
+            placeholder="选择日期">
+          </el-date-picker>
+        </div>
+        <div class="block" >
+          <span class="demonstration">截止时间</span>
+          <el-date-picker
             v-model="value2"
-            type="daterange"
-            align="right"
-           @change="date"
-            editable
-            unlink-panels
-            range-separator="至"
-            start-placeholder="开始日期"
-            end-placeholder="结束日期"
-            :picker-options="pickerOptions">
-            </el-date-picker>
+            type="date"
+            @change="end"
+            placeholder="选择日期">
+          </el-date-picker>
+        </div>
+        <div class="text" v-for="(item,k) in list" :key="k">
+            <div v-for="o in any" :key="o" class="text item">
+              <ul>
+                <li><span>预约时间 : </span> {{item.date }}</li>
+                <li><span>姓名 :</span> {{item.name }}</li>
+                <li><span>单位名称 :</span> {{item.company }}</li>
+                <li><span>身份证号码 :</span> {{item.id }}</li>
+                <li><span>办理团组号 :</span> {{item.num }}</li>
+                <li><span>办理业务 :</span> <i>{{item.todo }}</i></li>
+              </ul>
+            </div>
         </div>
     </div>
     <div class="foot">
@@ -61,12 +76,27 @@ export default {
         }]
       },
       value1: '',
-      value2: ''
+      value2: '',
+      list: '',
+      any: 1
     }
   },
   methods: {
     comeback () {
       this.$router.push('/Mobile')
+    },
+    start () {
+      console.log(this.value1)
+    },
+    end () {
+      var day = new Date(2019, 11, 1)
+      if (this.value1 < day) {
+        this.list = [
+          { date: '2019-09-25', name: '测试', company: '路引天下', id: 320926195511175276, num: 123456, todo: '签注办理 指纹采集 证照归还 出行业务' },
+          { date: '2019-10-25', name: '测试', company: '路引天下', id: 320926195511175276, num: 123456, todo: '签注办理 出行业务 指纹采集' },
+          { date: '2019-11-25', name: '测试', company: '路引天下', id: 320926195511175276, num: 123456, todo: '出行业务' },
+          { date: '2019-12-25', name: '测试', company: '路引天下', id: 320926195511175276, num: 123456, todo: '签注办理 指纹采集' }]
+      }
     }
   }
 }
@@ -97,8 +127,6 @@ body {
                 }
         }
         .foot {
-            position: fixed;
-            bottom: 0;
             width: 100%;
             text-align: center;
             p {
@@ -108,26 +136,44 @@ body {
         .content {
             width: 100%;
             .block {
-                width: 96%;
                 margin: 0 auto;
+                margin-bottom: 10px;
+                margin-left: 40px;
+                span{
+                  margin-right: 10px;
+                }
             }
         }
-    }
-    .el-picker-panel__body-wrapper {
-        max-width: 630px;
-    }
-    .el-date-range-picker.has-sidebar {
-        width: 580px;
-    }
-    .el-picker-panel__shortcut{
-        font-size: 8px;
-    }
-    .el-picker-panel__sidebar{
-        width: 12%;
-    }
-    .el-picker-panel__body {
-        width: 50%;
-        margin-left: 63px !important;
+        .text {
+          width: 80%;
+          margin: 0 auto;
+          background-color: #fff;
+          border-radius: 4px;
+          ul {
+            width: 100%;
+            text-align: left;
+            li {
+              list-style: none;
+              line-height: 30px;
+              span {
+                display: inline-block;
+                width: 80px;
+                text-align: right;
+              }
+              i {
+                width: 50%;
+                vertical-align: top;
+                font-style: normal;
+                display: inline-block;
+                word-wrap: break-word;
+                word-break: normal;
+              }
+            }
+          }
+        }
+        .el-card__body {
+          width: 50% !important;
+        }
     }
 }
 </style>

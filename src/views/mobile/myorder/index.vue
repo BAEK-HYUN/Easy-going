@@ -7,7 +7,7 @@
     </div>
     <el-form ref="form" :model="form" :rules="rules"  label-width="80px" class="content">
           <el-form-item label="办理业务" prop="region">
-              <el-select v-model="form.region" placeholder="请选择">
+              <el-select v-model="form.region" placeholder="请选择" filterable multiple>
               <el-option label="出行业务" value="1"></el-option>
               <el-option label="签证办理" value="2"></el-option>
               <el-option label="指纹采集" value="3"></el-option>
@@ -17,37 +17,37 @@
               </el-select>
           </el-form-item>
           <el-form-item label="预约日期" prop="date">
-              <el-date-picker type="date" placeholder="选择日期" v-model="form.date" style="width: 100%;"></el-date-picker>
+              <el-date-picker type="date" placeholder="选择日期" v-model="form.date" style="width: 79%;" class="date"></el-date-picker>
           </el-form-item>
           <el-form-item label="团组号" prop="num">
-            <el-input v-model="form.num" placeholder="请输入团组号"></el-input>
+            <el-input v-model="form.num" placeholder="请输入团组号" style="width: 79%;"></el-input>
           </el-form-item>
     <div class="table">
         <h3>人员表</h3>
-        <el-table :data="tabledatas" border>
-            <el-table-column label="姓名">
+        <el-table :data="tabledatas" border >
+            <el-table-column label="姓名" width="78">
                 <template slot-scope="scope">
-                    <el-input placeholder="请输入内容" v-show="scope.row.show" v-model="scope.row.name"></el-input>
+                    <el-input v-show="scope.row.show" v-model="scope.row.name" style="padding:0"></el-input>
                     <span v-show="!scope.row.show">{{scope.row.name}}</span>
                 </template>
             </el-table-column>
-            <el-table-column label="身份证号">
+            <el-table-column label="身份证号" width="160">
                 <template slot-scope="scope">
                     <el-input placeholder="请输入内容" v-show="scope.row.show" v-model="scope.row.id"></el-input>
                     <span v-show="!scope.row.show">{{scope.row.id}}</span>
                 </template>
             </el-table-column>
-            <el-table-column label="单位名称">
+            <el-table-column label="单位名称" width="135">
                 <template slot-scope="scope">
                     <el-input placeholder="请输入内容" v-show="scope.row.show" v-model="scope.row.company"></el-input>
                     <span v-show="!scope.row.show">{{scope.row.company}}</span>
                 </template>
             </el-table-column>
-            <el-table-column label="操作" width="150">
+            <!-- <el-table-column label="操作" width="150">
                 <template slot-scope="scope">
                   <el-button @click="edit(scope.row,scope.$index)" type="warning" icon="el-icon-check"  round size="mini" class="edit">{{scope.row.show?'保存':"修改"}}</el-button>
                 </template>
-            </el-table-column>
+            </el-table-column> -->
         </el-table>
     </div>
     </el-form>
@@ -72,8 +72,9 @@ export default {
     return {
       tabledatas: [{
         name: '',
-        ID: '',
-        company: ''
+        id: '',
+        company: '',
+        show: true
       }],
       form: {
         region: '',
@@ -104,7 +105,7 @@ export default {
         }
       })
     },
-    edit (row, index) {
+    blur (row, index) {
       row.show = !row.show
       // Vue.set(this.tabledatas, index, row)
       this.$set(this.tabledatas, index, row)
@@ -136,19 +137,23 @@ body {
       }
     }
     .content {
-      margin: 50px;
+      margin: 20px;
     }
     .table {
-        width: 96%;
-        margin: 0 auto;
+      width: 375px;
         h3 {
             font-size: 16px;
             font-weight: normal;
             padding-bottom: 10px;
             border-bottom: 1px solid #e6e6e6;
         }
+        input {
+          border: none;
+          padding: 0;
+        }
     }
     ul {
+        width: 90%;
         margin-top: 40px;
         text-align: center;
         li {
@@ -164,9 +169,8 @@ body {
       }
     }
     .submit {
-      margin-right: 100px;
-      display: block;
-      text-align: right;
+      width: 100%;
+      text-align: center;
     }
     .edit {
       font-size: 14px;

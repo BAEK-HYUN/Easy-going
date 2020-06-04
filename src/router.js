@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 // 工具
-import auth from '@/utils/auth'
+// import auth from '@/utils/auth'
 // 引入组件
 import Home from '@/views/home'
 import Login from '@/views/login'
@@ -108,11 +108,11 @@ const routes = [
 var router = new VueRouter({
   routes
 })
-// 前置导航守卫
-router.beforeEach((to, from, next) => {
-  // 如果你不是登录页面，而且你没有token，拦截到登录页面
-  if (to.path !== '/login' && !auth.getUser().access_token) return next('/login')
-  // 其他情况放行
-  next()
-})
+// // 前置导航守卫
+// router.beforeEach((to, from, next) => {
+//   // 如果你不是登录页面，而且你没有token，拦截到登录页面
+//   if (to.path !== '/login' && !auth.getUser().access_token) return next('/login')
+//   // 其他情况放行
+//   next()
+// })
 export default router
