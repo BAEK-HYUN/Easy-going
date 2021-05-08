@@ -14,7 +14,7 @@
     "echarts": "^4.8.0",
     "element-ui": "^2.13.2",
     "es6-promise": "^4.2.8",
-    "json-bigint": "^0.3.0",
+    "json-bigint": "^1.0.0",
     "json-serve": "^0.1.0",
     "moment": "^2.26.0",
     "vue": "^2.6.11",
